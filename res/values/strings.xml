@@ -10,5 +10,9 @@
     <string name="record_too_short">Please press longer. </string>
     <string name="record_processing">Processing… </string>
     <string name="jarvis_exception">Jarvis not smart enough to answer. </string>
+    <string name="title_activity_jarvis_welcome_page">JarvisWelcomePageActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
