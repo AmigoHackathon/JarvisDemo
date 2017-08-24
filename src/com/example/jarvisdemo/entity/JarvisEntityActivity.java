@@ -1,4 +1,6 @@
-package com.example.jarvisdemo;
+package com.example.jarvisdemo.entity;
+
+import java.io.IOException;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -15,6 +17,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jarvisdemo.R;
+import com.example.jarvisdemo.R.id;
+import com.example.jarvisdemo.R.layout;
+import com.example.jarvisdemo.R.string;
+import com.example.jarvisdemo.util.AudioRecordUtil;
 import com.iflytek.cloud.ErrorCode;
 import com.iflytek.cloud.InitListener;
 import com.iflytek.cloud.RecognizerListener;
@@ -25,9 +32,10 @@ import com.iflytek.cloud.SpeechRecognizer;
 import com.iflytek.cloud.SpeechUtility;
 
 
-public class MainActivity extends Activity {
+public class JarvisEntityActivity extends Activity {
 
-	private static final String TAG_IFLYTEK = MainActivity.class.getSimpleName();
+	private static final String TAG_IFLYTEK = JarvisEntityActivity.class.getSimpleName();
+	private static final String TAG_KALDI = TAG_IFLYTEK;
 	private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 	
 	private AudioRecordUtil aUtil;
@@ -53,7 +61,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
 //        setIflyTekRecognizer();
-//        PackageManager pManager = getPackageManager();
     	aUtil = AudioRecordUtil.getInstance();
         jarvisGreetingView = findViewById(R.id.text_greeting);
         button = findViewById(R.id.button_record);
@@ -73,7 +80,6 @@ public class MainActivity extends Activity {
 					 * Option 2: Using IFlyTek SDK
 					 */
 //					startAudioRecordUsingIFlyTek();
-					
 					
 					/*
 					 * Option 3
@@ -133,7 +139,7 @@ public class MainActivity extends Activity {
     		
     		@Override
     		public void onResult(RecognizerResult result, boolean isLast) {
-    			
+    			// TODO 
     		}
     		
     		@Override
@@ -161,10 +167,7 @@ public class MainActivity extends Activity {
     
 	private void startAudioRecordUsingKaldi() {
 		Toast.makeText(getApplicationContext(), "Recording start. ", Toast.LENGTH_SHORT).show();
-    	String filePathString = Environment.getExternalStorageDirectory() + 
-    			String.format("/jarvisaudio/iat_%s.wav", System.currentTimeMillis());
-    	aUtil.startRecord(filePathString);
-		
+    	aUtil.startRecord();
     }
     
     private void processAudio() {

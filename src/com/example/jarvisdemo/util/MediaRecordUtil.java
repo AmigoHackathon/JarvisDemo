@@ -1,13 +1,20 @@
-package com.example.jarvisdemo;
+package com.example.jarvisdemo.util;
 
 import android.media.MediaRecorder;
 
 public class MediaRecordUtil {
 
 	private MediaRecorder mRecorder;
+	private static MediaRecordUtil mInstance;
 
 	public MediaRecordUtil() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public static MediaRecordUtil getInstance() {
+		if (mInstance == null) 
+			mInstance = new MediaRecordUtil();
+		return mInstance;
 	}
 	
 	public void startRecord() {
