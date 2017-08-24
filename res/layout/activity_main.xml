@@ -1,0 +1,41 @@
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.jarvisdemo.MainActivity" >
+
+    <TextView 
+        android:id="@+id/text_greeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="@string/jarvis_greeting"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        android:padding="5dp"/>
+    
+    <ImageButton
+        android:contentDescription="@string/jarvis_desc" 
+        android:id="@+id/button_record"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"	        
+        android:background="@layout/selector_record_button"
+        android:layout_margin="10dp"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"/>
+   
+    <ListView 
+        android:id="@+id/listview_feedback" 
+        android:layout_above="@id/button_record"
+        android:layout_below="@id/text_greeting"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:divider="@android:color/transparent"
+        android:transcriptMode="alwaysScroll"/>
+
+</RelativeLayout>
