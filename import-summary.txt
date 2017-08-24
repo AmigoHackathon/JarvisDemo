@@ -1,0 +1,139 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitignore
+* .gradle/
+* .gradle/3.5/
+* .gradle/3.5/file-changes/
+* .gradle/3.5/file-changes/last-build.bin
+* .gradle/3.5/taskHistory/
+* .gradle/3.5/taskHistory/taskHistory.lock
+* .gradle/buildOutputCleanup/
+* .gradle/buildOutputCleanup/built.bin
+* .gradle/buildOutputCleanup/cache.properties
+* .gradle/buildOutputCleanup/cache.properties.lock
+* .idea/
+* .idea/compiler.xml
+* .idea/copyright/
+* .idea/copyright/profiles_settings.xml
+* .idea/misc.xml
+* .idea/workspace.xml
+* app/
+* app/build.gradle
+* app/libs/
+* app/libs/Msc.jar
+* app/libs/Sunflower.jar
+* app/src/
+* app/src/main/
+* app/src/main/AndroidManifest.xml
+* app/src/main/java/
+* app/src/main/java/com/
+* app/src/main/java/com/example/
+* app/src/main/java/com/example/jarvisdemo/
+* app/src/main/java/com/example/jarvisdemo/entity/
+* app/src/main/java/com/example/jarvisdemo/entity/JarvisEntityActivity.java
+* app/src/main/java/com/example/jarvisdemo/util/
+* app/src/main/java/com/example/jarvisdemo/util/AudioRecordUtil.java
+* app/src/main/java/com/example/jarvisdemo/util/MediaRecordUtil.java
+* app/src/main/jniLibs/
+* app/src/main/jniLibs/arm64-v8a/
+* app/src/main/jniLibs/arm64-v8a/libmsc.so
+* app/src/main/jniLibs/armeabi-v7a/
+* app/src/main/jniLibs/armeabi-v7a/libmsc.so
+* app/src/main/jniLibs/armeabi/
+* app/src/main/jniLibs/armeabi/libmsc.so
+* app/src/main/jniLibs/mips/
+* app/src/main/jniLibs/mips/libmsc.so
+* app/src/main/jniLibs/mips64/
+* app/src/main/jniLibs/mips64/libmsc.so
+* app/src/main/jniLibs/x86/
+* app/src/main/jniLibs/x86/libmsc.so
+* app/src/main/jniLibs/x86_64/
+* app/src/main/jniLibs/x86_64/libmsc.so
+* app/src/main/res/
+* app/src/main/res/drawable-hdpi/
+* app/src/main/res/drawable-hdpi/button_record_release.png
+* app/src/main/res/drawable-hdpi/button_record_touching.png
+* app/src/main/res/drawable-hdpi/ic_launcher.png
+* app/src/main/res/drawable-mdpi/
+* app/src/main/res/drawable-mdpi/ic_launcher.png
+* app/src/main/res/drawable-xhdpi/
+* app/src/main/res/drawable-xhdpi/ic_launcher.png
+* app/src/main/res/drawable-xxhdpi/
+* app/src/main/res/drawable-xxhdpi/ic_launcher.png
+* app/src/main/res/layout/
+* app/src/main/res/layout/activity_main.xml
+* app/src/main/res/layout/selector_record_button.xml
+* app/src/main/res/menu/
+* app/src/main/res/menu/main.xml
+* app/src/main/res/values-v11/
+* app/src/main/res/values-v11/styles.xml
+* app/src/main/res/values-v14/
+* app/src/main/res/values-v14/styles.xml
+* app/src/main/res/values-w820dp/
+* app/src/main/res/values-w820dp/dimens.xml
+* app/src/main/res/values/
+* app/src/main/res/values/dimens.xml
+* app/src/main/res/values/strings.xml
+* app/src/main/res/values/styles.xml
+* build.gradle
+* gradle/
+* gradle/wrapper/
+* gradle/wrapper/gradle-wrapper.jar
+* gradle/wrapper/gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* ic_launcher-web.png
+* proguard-project.txt
+* settings.gradle
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:26.+
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app/src/main/AndroidManifest.xml
+* libs/Msc.jar => app/libs/Msc.jar
+* libs/Sunflower.jar => app/libs/Sunflower.jar
+* libs/arm64-v8a/libmsc.so => app/src/main/jniLibs/arm64-v8a/libmsc.so
+* libs/armeabi-v7a/libmsc.so => app/src/main/jniLibs/armeabi-v7a/libmsc.so
+* libs/armeabi/libmsc.so => app/src/main/jniLibs/armeabi/libmsc.so
+* libs/mips/libmsc.so => app/src/main/jniLibs/mips/libmsc.so
+* libs/mips64/libmsc.so => app/src/main/jniLibs/mips64/libmsc.so
+* libs/x86/libmsc.so => app/src/main/jniLibs/x86/libmsc.so
+* libs/x86_64/libmsc.so => app/src/main/jniLibs/x86_64/libmsc.so
+* res/ => app/src/main/res/
+* src/ => app/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
