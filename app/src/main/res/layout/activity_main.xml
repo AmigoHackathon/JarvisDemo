@@ -15,7 +15,17 @@
         android:textSize="20sp"
         android:textStyle="bold|italic"
         android:padding="5dp"/>
-    
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/monkeyImageView"
+        android:src="@drawable/rotate_monkey"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:visibility="invisible"/>
+
     <ImageButton
         android:contentDescription="@string/jarvis_desc" 
         android:id="@+id/button_record"

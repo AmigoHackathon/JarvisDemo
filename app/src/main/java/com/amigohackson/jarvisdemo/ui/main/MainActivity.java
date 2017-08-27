@@ -9,7 +9,10 @@ import android.support.v4.content.ContextCompat;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -20,19 +23,25 @@ import static android.Manifest.permission.RECORD_AUDIO;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements Animation.AnimationListener{
     public static final int REQUEST_PERMISSION_CODE = 1;
 	
 	private AudioRecordUtil recordUtil;
 	private ImageButton voiceButton;
+    private ImageView monkeyImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        voiceButton = findViewById(R.id.button_record);
+        monkeyImageView = findViewById(R.id.monkeyImageView);
+
+        final Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.rotate);
+        animation.setAnimationListener(MainActivity.this);
 
     	recordUtil = AudioRecordUtil.getInstance();
-        voiceButton = findViewById(R.id.button_record);
         voiceButton.setOnTouchListener(new OnTouchListener() {
 			
 			@SuppressLint("ClickableViewAccessibility") 
@@ -40,6 +49,10 @@ public class MainActivity extends Activity {
 			public boolean onTouch(View v, MotionEvent event) {
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
+				    // Stop animation
+                    monkeyImageView.setVisibility(View.GONE);
+                    monkeyImageView.clearAnimation();
+
 					voiceButton.setSelected(true);
 					if(!checkPermission()){
                         requestPermission();
@@ -50,6 +63,10 @@ public class MainActivity extends Activity {
 					voiceButton.setSelected(false);
                     stopAudioRecording();
 					processAudio();
+
+                    // Start animation
+                    monkeyImageView.setVisibility(View.VISIBLE);
+                    monkeyImageView.startAnimation(animation);
 					break;
 				default:
 					break;
@@ -92,5 +109,20 @@ public class MainActivity extends Activity {
     private void requestPermission() {
         ActivityCompat.requestPermissions(MainActivity.this, new
                 String[]{WRITE_EXTERNAL_STORAGE, RECORD_AUDIO}, REQUEST_PERMISSION_CODE);
+    }
+
+    @Override
+    public void onAnimationStart(Animation animation) {
+
+    }
+
+    @Override
+    public void onAnimationEnd(Animation animation) {
+
+    }
+
+    @Override
+    public void onAnimationRepeat(Animation animation) {
+
     }
 }
