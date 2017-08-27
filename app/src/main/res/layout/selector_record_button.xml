@@ -5,3 +5,4 @@
     <item android:state_selected="false"
         android:drawable="@drawable/button_record_release" />
 </selector>
+<!-- TODO fix IDE error hits -->
