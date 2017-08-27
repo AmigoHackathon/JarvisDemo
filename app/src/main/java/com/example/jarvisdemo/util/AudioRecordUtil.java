@@ -1,5 +1,12 @@
 package com.example.jarvisdemo.util;
 
+import android.media.AudioFormat;
+import android.media.AudioRecord;
+import android.media.MediaRecorder.AudioSource;
+import android.os.Environment;
+import android.os.Process;
+import android.util.Log;
+
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -10,16 +17,10 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-import android.media.AudioFormat;
-import android.media.AudioRecord;
-import android.media.MediaRecorder.AudioSource;
-import android.os.Environment;
-import android.os.Process;
-import android.util.Log;
-
 public class AudioRecordUtil {
 
 	private static final String TAG = "AudioRecordUtil";
+	private static final int SAMPLE_RATE = 44100;
 	private AudioRecord audioRecorder;
 	private DataOutputStream outputStream;
 	private Thread recordThread;
@@ -29,9 +30,9 @@ public class AudioRecordUtil {
 	private File audioPcmFile, audioWavFile;
 	
 	public AudioRecordUtil() {
-		bufferSize = AudioRecord.getMinBufferSize(8000, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
-		audioRecorder = new AudioRecord(AudioSource.MIC, 
-										8000, 
+		bufferSize = AudioRecord.getMinBufferSize(SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
+		audioRecorder = new AudioRecord(AudioSource.DEFAULT,
+										SAMPLE_RATE,
 										AudioFormat.CHANNEL_IN_MONO, 
 										AudioFormat.ENCODING_PCM_16BIT, 
 										bufferSize * 2);
@@ -64,16 +65,12 @@ public class AudioRecordUtil {
 				while (isStart) {
 					if (audioRecorder != null) {
 						bytesRecord = audioRecorder.read(tempBuffer, 0, tempBuffer.length);
-						if (bytesRecord == AudioRecord.ERROR_INVALID_OPERATION || bytesRecord == AudioRecord.ERROR_BAD_VALUE) 
-							continue;
-						else if (bytesRecord != 0 && bytesRecord != -1) {
+						if (bytesRecord > 0)
 							// write audio file
 							outputStream.write(tempBuffer, 0, bytesRecord);
-						} else 
-							break;
 					}
 				}
-				transcodeRawToWav();
+//				transcodeRawToWav();
 			} catch (Exception e) {
 				e.printStackTrace();
 				Log.d(TAG, e.getMessage());
@@ -82,7 +79,7 @@ public class AudioRecordUtil {
 	};
 	
 	private void setPath() throws Exception {
-		File fPath = new File(Environment.getExternalStorageDirectory() + "/msc/");
+		File fPath = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/msc/");
 		if (!fPath.exists()) {
 			fPath.mkdirs();
 		}
@@ -165,7 +162,7 @@ public class AudioRecordUtil {
 		}
 		
 		DataOutputStream wavOutputStream = null;
-		File fPath = new File(Environment.getExternalStorageDirectory().getAbsoluteFile() + "/msc/");
+		File fPath = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/msc/");
 		fPath.mkdirs();
 		if (fPath.exists()) {
 			fPath.delete();
@@ -181,8 +178,8 @@ public class AudioRecordUtil {
 			writeInt(wavOutputStream, 16);
 			writeShort(wavOutputStream, (short) 1);
 			writeShort(wavOutputStream, (short) 1);
-			writeInt(wavOutputStream, 44100);
-			writeInt(wavOutputStream, 44100 * 2);
+			writeInt(wavOutputStream, SAMPLE_RATE);
+			writeInt(wavOutputStream, SAMPLE_RATE * 2);
 			writeShort(wavOutputStream, (short) 2);
 			writeShort(wavOutputStream, (short) 16);
 			writeString(wavOutputStream, "data");
@@ -194,6 +191,7 @@ public class AudioRecordUtil {
 			for (short s : shorts) {
 				byteBuffer.putShort(s);
 			}
+			wavOutputStream.write(byteBuffer.array());
 			wavOutputStream.write(readFileToBytes(audioPcmFile));
 			
 		} finally {
