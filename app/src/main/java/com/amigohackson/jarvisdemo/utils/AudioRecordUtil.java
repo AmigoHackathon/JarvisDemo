@@ -34,7 +34,7 @@ public class AudioRecordUtil {
                 RECORDER_SAMPLE_RATE,
                 RECORDER_CHANNELS_IN,
                 RECORDER_AUDIO_ENCODING);
-        if (bufferSize == AudioRecord.ERROR_BAD_VALUE || bufferSize == AudioRecord.ERROR_BAD_VALUE) {
+        if (bufferSize == AudioRecord.ERROR_BAD_VALUE || bufferSize == AudioRecord.ERROR_INVALID_OPERATION) {
             Log.e(TAG, "Bad value for \"bufferSize\", recording parameters are " +
                     "not supported bye the hardware");
             Log.e(TAG, "\"bufferSize\"=" + bufferSize);
