@@ -1,4 +1,4 @@
-package com.example.jarvisdemo.util;
+package com.example.jarvisdemo.utils;
 
 import android.media.MediaRecorder;
 

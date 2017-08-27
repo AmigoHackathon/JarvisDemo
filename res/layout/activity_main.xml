@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.jarvisdemo.entity.JarvisKaldiActivity" >
+    tools:context="com.example.jarvisdemo.ui.main.MainActivity" >
 
     <TextView 
         android:id="@+id/text_greeting"
@@ -28,14 +28,14 @@
         android:scaleType="centerInside"
         android:adjustViewBounds="true"/>
    
-    <!--<ListView -->
-        <!--android:id="@+id/listview_feedback" -->
-        <!--android:layout_above="@id/button_record"-->
-        <!--android:layout_below="@id/text_greeting"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:background="@android:color/transparent"-->
-        <!--android:divider="@android:color/transparent"-->
-        <!--android:transcriptMode="alwaysScroll"/>-->
+    <ListView 
+        android:id="@+id/listview_feedback" 
+        android:layout_above="@id/button_record"
+        android:layout_below="@id/text_greeting"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:divider="@android:color/transparent"
+        android:transcriptMode="alwaysScroll"/>
 
 </RelativeLayout>
